@@ -26,6 +26,7 @@ function render(variables = {}) {
   console.log("These are the current variables: ", variables); //print on the console
   // here we ask the logical questions to make decisions on how to build the html
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
+
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
@@ -35,16 +36,16 @@ function render(variables = {}) {
 
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
-            ${cover}
+          ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-            ${fullName}
-            ${job}
-            ${location}
+          ${fullName}
+          ${job}
+          ${location}
           <ul class="${variables.socialMediaPosition}">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fa fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/4geeksacademy"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fa fa-instagram"></i></a></li>
+            <li><a target="_blank" rel="noopener" href="https://twitter.com/4geeksacademy"><i class="fa fa-twitter"></i></a></li>
+            <li><a target="_blank" rel="noopener" href="https://github.com/${variables.github}"><i class="fa fa-github"></i></a></li>
+            <li><a target="_blank" rel="noopener" href="https://linkedin.com/in/${variables.linkedin}"><i class="fa fa-linkedin"></i></a></li>
+            <li><a target="_blank" rel="noopener" href="https://instagram.com/${variables.instagram}"><i class="fa fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
@@ -58,15 +59,16 @@ window.onload = function() {
     // if includeCover is true the algorithm should
     includeCover: true,
     // this is the url of the image that will used as background for the profile cover
-    background: "https://images.unsplash.com/photo-1511974035430-5de47d3b95da",
+    background:
+      "https://images.pexels.com/photos/1125774/pexels-photo-1125774.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     // this is the url for the profile avatar
-    avatarURL: "https://randomuser.me/api/portraits/women/42.jpg",
+    avatarURL: "https://avatars.githubusercontent.com/u/118434024?v=4",
     // social media bar position (left or right)
     socialMediaPosition: "position-left",
     // social media usernames
     twitter: null,
-    github: "alesanchezr",
-    linkedin: "linkedin.com/in/lucia-mackova",
+    github: "LucyMacko",
+    linkedin: "lucia-mackova",
     instagram: "lu8cylu",
     name: "Lucy",
     lastname: "Macko",
@@ -83,7 +85,7 @@ window.onload = function() {
       let values = {};
       values[attribute] =
         this.value == "" || this.value == "null"
-          ? null
+          ? alert("You must write something!")
           : this.value == "true"
           ? true
           : this.value == "false"
