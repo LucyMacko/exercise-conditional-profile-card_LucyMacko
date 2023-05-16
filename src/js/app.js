@@ -31,6 +31,8 @@ function render(variables = {}) {
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
   let fullName = `<h1>${variables.name} ${variables.lastname} </h1>`;
+  if (variables.name == "" || variables.lastname == "")
+    alert("You must write something!");
   let job = `<h2>${variables.role} </h2>`;
   let location = `<h3>${variables.city}, ${variables.country}</h3>`;
 
@@ -42,7 +44,7 @@ function render(variables = {}) {
           ${job}
           ${location}
           <ul class="${variables.socialMediaPosition}">
-            <li><a target="_blank" rel="noopener" href="https://twitter.com/4geeksacademy"><i class="fa fa-twitter"></i></a></li>
+            <li><a target="_blank" rel="noopener" href="https://twitter.com/${variables.twitter}"><i class="fa fa-twitter"></i></a></li>
             <li><a target="_blank" rel="noopener" href="https://github.com/${variables.github}"><i class="fa fa-github"></i></a></li>
             <li><a target="_blank" rel="noopener" href="https://linkedin.com/in/${variables.linkedin}"><i class="fa fa-linkedin"></i></a></li>
             <li><a target="_blank" rel="noopener" href="https://instagram.com/${variables.instagram}"><i class="fa fa-instagram"></i></a></li>
